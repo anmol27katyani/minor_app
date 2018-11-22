@@ -1,13 +1,10 @@
 package io.github.octamois.minor;
 
+import android.os.AsyncTask;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.TextView;
 import android.content.Intent;
-import android.annotation.SuppressLint;
-import android.support.v4.app.NavUtils;
-import android.widget.EditText;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -30,4 +27,26 @@ public class MainActivity extends AppCompatActivity {
         Intent intent = new Intent(this, studentLoginPage.class);
         startActivity(intent);
     }
+    public class HttpGetRequest extends AsyncTask<String, Void, String> {
+        @Override
+        protected String doInBackground(String... params){
+
+            return null;
+        }
+        @Override
+        protected void onPostExecute(String result){
+            super.onPostExecute(result);
+        }
+    }
+    public class SomeOtherClass {
+        //Some url endpoint that you may have
+        String myUrl = "http://myApi.com/get_some_data";
+        //String to place our result in
+        String result;
+        //Instantiate new instance of our class
+        HttpGetRequest getRequest = new HttpGetRequest();
+        //Perform the doInBackground method, passing in our url
+        result = getRequest.execute(myUrl).get();
+    }
+
 }
